@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshGuard AI Result</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>🍎 FreshGuard AI</h1>
+    <p>AI Powered Food Quality Detection</p>
+
+</header>
+
+
+
+<main>
+
+    <div class="result-card">
+
+
+        <h2>Prediction Result</h2>
+        
+
+
+        <img src="/{{ image_path }}" class="food-image">
+
+
+        <div class="info">
+
+
+            <h3>
+                Food:
+                <span>{{ food_name }}</span>
+            </h3>
+
+
+
+            <h3>
+    Status:
+
+    {% if condition == "Fresh" %}
+
+        <span class="status fresh">
+            🟢 Fresh
+        </span>
+
+    {% else %}
+
+        <span class="status rotten">
+            🔴 Rotten
+        </span>
+
+    {% endif %}
+
+</h3>
+
+
+
+            <h3>
+    Confidence:
+    <span class="{{ confidence_color }}">
+        {{ confidence|round(2) }}%
+    </span>
+</h3>
+
+
+<div class="progress">
+
+    <div class="progress-bar"
+         style="width: {{ confidence }}%">
+    </div>
+
+</div>
+
+
+<h3>
+    Recommendation:
+</h3>
+
+<p>
+    {{ recommendation }}
+</p>
+<hr>
+
+<h3>🏆 Top 3 Predictions</h3>
+
+<div class="top3-container">
+
+{% for item in top3_predictions %}
+
+    <div class="prediction-card">
+
+        <span class="prediction-name">
+            {{ item.class }}
+        </span>
+
+        <span class="prediction-score">
+            {{ item.confidence }}%
+        </span>
+
+    </div>
+{% endfor %}
+            <div class="progress">
+                <div class="progress-bar" style="width: {{ confidence }}%;"></div>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+
+
+</body>
+
+</html>

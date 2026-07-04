@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+
+uploads/
+static/uploads/
+
+dataset/
+experiments/
+
+model/FreshGuard_AI.keras
